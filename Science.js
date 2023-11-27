@@ -16,6 +16,14 @@ infobutton.onclick = () => {
   location.href = "./instructions.html";
 };
 
+//Background music
+
+let bgSound = new Audio('./assets/bgmusic.mp3');
+
+bgSound.play();
+bgSound.loop=true;
+
+//Questions
 
 const Question= [
   {
@@ -261,7 +269,6 @@ function handleWrongAnswer() {
 
 // Initial display of the first question
 displayQuestion();
-
 
 
 

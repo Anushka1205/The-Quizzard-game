@@ -16,6 +16,14 @@ infobutton.onclick = () => {
   location.href = "./instructions.html";
 };
 
+//Background music
+
+let bgSound = new Audio('./assets/bgmusic.mp3');
+
+bgSound.play();
+bgSound.loop=true;
+
+//Queations 
 
 const Question= [
   {
@@ -186,7 +194,7 @@ function displayQuestion() {
     // Display question if currentQuestion is defined
     if (currentQuestion) {
       document.getElementById('sec1').innerText = currentQuestion.Ques;
-      document.getElementById('sec1').style.color = 'white'; // Set text color to white
+      document.getElementById('sec1').style.color = 'white'; 
 
       // Display answer options
       const answerContainer = document.getElementById('sec2');
@@ -195,7 +203,7 @@ function displayQuestion() {
         const optionBox = document.createElement('div');
         optionBox.classList.add('options');
         optionBox.innerText = option.text;
-        optionBox.style.color = 'white'; // Set text color to white
+        optionBox.style.color = 'white'; 
         optionBox.addEventListener('click', function () {
           if (option.correct) {
             handleCorrectAnswer(optionBox);
@@ -215,13 +223,21 @@ function displayQuestion() {
     console.error('Error: No more questions to display.');
   }
 }
-
+let score=0;
 function handleCorrectAnswer(optionBox) {
   // Stop the timer
   resetTimer();
 
   // Highlight the correct answer in green
   optionBox.style.backgroundColor = 'green';
+  score+=5;
+  console.log(score)
+
+  localStorage.setItem("points","score");
+
+
+    
+  localStorage.setItem("nickname","score");
 
   // Wait for a moment to show the correct answer
   setTimeout(() => {
@@ -243,6 +259,7 @@ function handleCorrectAnswer(optionBox) {
       window.location.href = 'score.html';
     }
   }, 1000);
+
 }
 
 function handleWrongAnswer() {

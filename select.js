@@ -21,3 +21,10 @@ const sportsbutton = document.getElementById("Sports");
 sportsbutton.onclick = () => {
   location.href = "./Sports.html";
 };
+
+//Background music
+
+let bgSound = new Audio('./assets/bgmusic.mp3');
+
+bgSound.play();
+bgSound.loop=true;

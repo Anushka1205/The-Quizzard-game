@@ -4,27 +4,41 @@ frontbutton.onclick = () => {
   location.href = "./home.html";
 };
 
+let bgSound = new Audio('./assets/bgmusic.mp3');
+// let isSoundEnabled = true;
+function play(){
+bgSound.play();
+bgSound.loop=true;
+}
+
+// Total score
+const userScore = 75; 
+
+//Local storage
+const store = localStorage.getItem("points");
+
+// Get the elements
+const pointsElement = document.getElementById('points');
+const performanceElement = document.getElementById('performance');
+
+// // Display the user's score
+pointsElement.innerHTML = `<h1>Your Score: ${store}</h1>`;
+
+
+// Determine the message based on the score
+let message = '';
+
+if (store === userScore) {
+    message = "Congratulations! You've scored a perfect 75!";
+} else if (store >= userScore) {
+    message = "Well Played! You've scored 55 or more. Great job!";
+} else {
+    message = "Try again. You've scored less than 55.";
+}
+console.log(message,performanceElement)
+
+// Display the message
+performanceElement.innerHTML = `<h1>${message} 😊🎊</h1>`;
 
 
 
-
-
-
-// let userScore = 0;
-// userScore += 5;
-
-
-// function displayResultMessage() {
-//     let resultMessage = '';
-
-//     if (userScore === 75) {
-//       resultMessage = "Congratulations! Great Job. You've got a perfect score!";
-//     } else if (userScore >= 55) {
-//       resultMessage = "Well Played! You've scored 11 or more. Keep it up!";
-//     } else {
-//       resultMessage = "Better luck next time. You've scored less than 11.";
-//     }
-
-//     // Display the result message
-//     alert(resultMessage);
-//   }
